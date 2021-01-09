@@ -1,6 +1,8 @@
-const getTotalFriendCount = users => {
-  return users.reduce((acc, { friends }) => acc + friends.length, 0);
+// Пиши код ниже этой строки
+const sortByDescendingFriendCount = users => {
+  return [...users].sort((a, b) => b.friends.length - a.friends.length);
 };
+// Пиши код выше этой строки
 users = [
   {
     name: 'Moore Hensley',
@@ -66,4 +68,4 @@ users = [
     gender: 'female',
   },
 ];
-console.log(getTotalFriendCount(users));
+console.table(sortByDescendingFriendCount(users));
