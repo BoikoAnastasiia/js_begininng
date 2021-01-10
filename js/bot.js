@@ -1,8 +1,18 @@
-// Пиши код ниже этой строки
-const sortByDescendingFriendCount = users => {
-  return [...users].sort((a, b) => b.friends.length - a.friends.length);
+const getTotalBalanceByGender = (users, gender) => {
+  return users
+    .filter(user => user.gender === gender)
+    .reduce((acc, current) => acc + current.balance, 0);
 };
-// Пиши код выше этой строки
+
+// const uniqueSortedCourses = students
+//   .flatMap(student => student.courses)
+//   .filter((course, index, array) => array.indexOf(course) === index)
+//   .sort((a, b) => a.localeCompare(b));
+
+// const names = [...students]
+//   .sort((a, b) => a.score - b.score)
+//   .map(student => student.name);
+
 users = [
   {
     name: 'Moore Hensley',
@@ -68,4 +78,4 @@ users = [
     gender: 'female',
   },
 ];
-console.table(sortByDescendingFriendCount(users));
+console.log(getTotalBalanceByGender(users, 'male'));
