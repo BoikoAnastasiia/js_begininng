@@ -1,8 +1,24 @@
-const confused = 'no';
-const myKey = confused;
+'use strict';
+function makeAdder(x) {
+  // parameter x is an inner variable inner function add() uses x, so it has a "closure" over it
 
-const obj = {
-  [myKey]: false,
-};
+  function add(y) {
+    return y + x;
+  }
 
-console.log(obj);
+  return add;
+}
+// plusOne gets a reference to the inner add(..)
+// function with closure over the x parameter of the outer makeAdder(..)
+var plusOne = makeAdder(1);
+console.log(plusOne());
+// plusTen gets a reference to the inner add(..) function with
+// closure over the x parameter of the outer makeAdder(..)
+
+var plusTen = makeAdder(10);
+
+plusOne(3); // 4 <-- 1 + 3
+plusOne(41); // 42 <-- 1 + 41
+plusTen(13); // 23 <-- 10 + 13
+
+console.log(plusOne(3));
